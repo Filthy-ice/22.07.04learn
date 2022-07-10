@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include<stdio.h>
+#include<assert.h>
+#include<string.h>
 
 //第一题
 //struct Test
@@ -38,3 +40,45 @@
 //	printf("%x %x", ptr1[-1], ptr2);//输出4,2000000(HEX)
 //	return 0;
 //}
+
+//int main()
+//{
+//	char* c[] = { "ENTER","NEW","POINT","FIRST" };
+//	char** cp[] = { c + 3,c + 2,c + 1,c };
+//	char*** cpp = cp;
+//
+//	printf("%s\n", **++cpp);
+//	printf("%s\n", *--*++cpp+3);//用画内存来具体观察。“ER”
+//	printf("%s\n", *cpp[-2]+3);//ST
+//	printf("%s\n", cpp[-1][-1]+1);//EW
+//	return 0;
+//}
+
+
+
+//写一个逆序函数让数组中的内容逆序排列。
+void reverse(char* arr)
+{
+	assert(arr);
+	int len = strlen(arr);
+	char* left = arr;
+	char* reight = arr + len - 1;
+	while (left < reight)
+	{
+		char tmp = *left;
+		*left = *reight;
+		*reight = tmp;
+		left++;
+		reight--;
+	}
+	return 0;
+}
+
+int main()
+{
+	char arr[256];
+	scanf("%s", arr);
+	reverse(arr);
+	printf("%s\n", arr);
+	return 0;
+}
