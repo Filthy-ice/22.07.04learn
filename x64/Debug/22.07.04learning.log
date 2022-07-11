@@ -1,4 +1,2 @@
 ﻿  test.c
-F:\global vs codes\22.07.04learning\test.c(72,10): warning C4098: “reverse”:“void”函数返回值
-F:\global vs codes\22.07.04learning\test.c(61,18): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
   22.07.04learning.vcxproj -> F:\global vs codes\22.07.04learning\x64\Debug\22.07.04learning.exe
