@@ -189,74 +189,74 @@
 //}
 
 //用二维数组编写。
-void arrange(char(* str)[13], int L)
-{
-	//已有二维字符数组
-	//1.每一行
-	//2.每一行字符改变从中间向两端递进
-	//3.达到最大值后，从两端向中间递减
-	//4.打印字符数组
-	
-	//先用普通算法。
-	int line = (L - 1) / 2;//6 mid
-	//先换上面，后换下面。
-	int i = 0;
-	for (i = 0; i <= line; i++)
-	{
-		int j = 0;
-		for (j = 0; j < L ; j++)
-		{
-			if ((L - (2 * i + 1)) / 2 - 1 < j && j < (L - 1) / 2 + i + 1)
-			{
-				str[i][j] = '*';
-			}
-			else
-			{
-				str[i][j] = ' ';
-			}
-
-		}
-	}
-	for (i = 7; line < i && i < L; i++)
-	{
-		int j = 0;
-		for (j = 0; j < L; j++)
-		{
-			if (i % ((L + 1) / 2) < j && j < L - (i - line))
-			{
-				str[i][j] = '*';
-			}
-			else
-			{
-				str[i][j] = ' ';
-			}
-
-		}
-	}
-}
-
-void print(char(*pri)[13],int L)
-{
-	int i = 0;
-	for (i = 0; i < L; i++)
-	{
-		int j = 0;
-		for (j = 0; j < L; j++)
-		{
-			printf("%c", pri[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-int main()
-{
-	char arr[13][13] = { 0 };
-	int line = sizeof(arr) / sizeof(arr[0]);
-	arrange(arr,line);
-	print(arr,line);
-	return 0;
-}
+//void arrange(char(* str)[13], int L)
+//{
+//	//已有二维字符数组
+//	//1.每一行
+//	//2.每一行字符改变从中间向两端递进
+//	//3.达到最大值后，从两端向中间递减
+//	//4.打印字符数组
+//	
+//	//先用普通算法。
+//	int line = (L - 1) / 2;//6 mid
+//	//先换上面，后换下面。
+//	int i = 0;
+//	for (i = 0; i <= line; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < L ; j++)
+//		{
+//			if ((L - (2 * i + 1)) / 2 - 1 < j && j < (L - 1) / 2 + i + 1)
+//			{
+//				str[i][j] = '*';
+//			}
+//			else
+//			{
+//				str[i][j] = ' ';
+//			}
+//
+//		}
+//	}
+//	for (i = 7; line < i && i < L; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < L; j++)
+//		{
+//			if (i % ((L + 1) / 2) < j && j < L - (i - line))
+//			{
+//				str[i][j] = '*';
+//			}
+//			else
+//			{
+//				str[i][j] = ' ';
+//			}
+//
+//		}
+//	}
+//}
+//
+//void print(char(*pri)[13],int L)
+//{
+//	int i = 0;
+//	for (i = 0; i < L; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < L; j++)
+//		{
+//			printf("%c", pri[i][j]);
+//		}
+//		printf("\n");
+//	}
+//}
+//
+//int main()
+//{
+//	char arr[13][13] = { 0 };
+//	int line = sizeof(arr) / sizeof(arr[0]);
+//	arrange(arr,line);
+//	print(arr,line);
+//	return 0;
+//}
 
 //void print(int(* pri)[3])
 //{
@@ -277,5 +277,38 @@ int main()
 //{
 //	int arr[3][3] = { {1,2,3},{4,5,6},{7,8,9} };
 //	print(arr);
+//	return 0;
+//}
+
+//喝汽水问题，1元一瓶，两个瓶盖可以换一瓶汽水，20元可以喝多少瓶。
+
+//int test(int x, int y)
+//{
+//	//1.先全部购买为汽水，相当于开局有20个瓶子。
+//	//2.除2，每次得到的商累加加上余数，再除2，直到商小于1，不能兑换。
+//	//3.每次被除数相加就是喝到的瓶数。
+//	int sum = 0;
+//	do
+//	{
+//		int n = x / y;
+//		y = 2;
+//		int loss = x % y;
+//		x = n + loss;
+//		sum += n;
+//		if (x <= 1)
+//		{
+//			y = 0;
+//		}
+//
+//	} while (y);
+//	return sum;
+//}
+//
+//int main()
+//{
+//	int i = 20;
+//	int s = 1;
+//	int n = test(i, s);
+//	printf("可以喝%d瓶汽水。", n);
 //	return 0;
 //}
