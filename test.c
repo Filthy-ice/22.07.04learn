@@ -189,7 +189,7 @@
 //}
 
 //用二维数组编写。
-void arrange(char* str)
+void arrange(char(* str)[13], int L)
 {
 	//已有二维字符数组
 	//1.每一行
@@ -197,11 +197,85 @@ void arrange(char* str)
 	//3.达到最大值后，从两端向中间递减
 	//4.打印字符数组
 	
+	//先用普通算法。
+	int line = (L - 1) / 2;//6 mid
+	//先换上面，后换下面。
+	int i = 0;
+	for (i = 0; i <= line; i++)
+	{
+		int j = 0;
+		for (j = 0; j < L ; j++)
+		{
+			if ((L - (2 * i + 1)) / 2 - 1 < j && j < (L - 1) / 2 + i + 1)
+			{
+				str[i][j] = '*';
+			}
+			else
+			{
+				str[i][j] = ' ';
+			}
+
+		}
+	}
+	for (i = 7; line < i && i < L; i++)
+	{
+		int j = 0;
+		for (j = 0; j < L; j++)
+		{
+			if (i % ((L + 1) / 2) < j && j < L - (i - line))
+			{
+				str[i][j] = '*';
+			}
+			else
+			{
+				str[i][j] = ' ';
+			}
+
+		}
+	}
+}
+
+void print(char(*pri)[13],int L)
+{
+	int i = 0;
+	for (i = 0; i < L; i++)
+	{
+		int j = 0;
+		for (j = 0; j < L; j++)
+		{
+			printf("%c", pri[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 int main()
 {
 	char arr[13][13] = { 0 };
-	arrange(arr);
+	int line = sizeof(arr) / sizeof(arr[0]);
+	arrange(arr,line);
+	print(arr,line);
 	return 0;
 }
+
+//void print(int(* pri)[3])
+//{
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 3; j++)
+//		{
+//			printf("%d ", pri[i][j]);
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+//
+//int main()
+//{
+//	int arr[3][3] = { {1,2,3},{4,5,6},{7,8,9} };
+//	print(arr);
+//	return 0;
+//}
