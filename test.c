@@ -312,3 +312,67 @@
 //	printf("可以喝%d瓶汽水。", n);
 //	return 0;
 //}
+
+//写一个程序让数组中的奇数靠前，偶数靠后。
+
+void move(int str[10], int n)
+{
+	//建立思维,怎么去调整？
+	//1.我们可以使用从两端向中间扫描的办法来进行交换
+	//2.如果交换，左边下标往右移动一位，否则不移动。
+	//3.界定范围，左>=右
+	int reight = n - 1;
+	for (; reight >= 0; reight--)
+	{
+		if (str[reight] % 2 == 1)
+		{
+			int i = 0;
+			int count = 0;
+			for (i = 0; i < n; i++)
+			{
+				if (count != 0)
+					break;
+				if (str[i] % 2 == 0)
+				{
+					int tmp = str[i];
+					str[i] = str[reight];
+					str[reight] = tmp;
+				}
+				else
+					continue;
+			}
+		}
+		else
+			continue;
+	}
+	return 0;
+}//err
+
+void print(int* pri, int n)
+{
+	int i = 0;
+	for (i = 0; i < n; i++)
+	{
+		printf("%d ", pri[i]);
+	}
+	return 0;
+}
+int main()
+{
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	move(arr, sz);
+	print(arr,sz);
+	return 0;
+}
+
+//int main()
+//{
+//	int i = 2;
+//	int j = 0;
+//	if (i % 2 == 0)
+//		printf("是偶数。");
+//	else
+//		printf("是奇数。");
+//	return 0;
+//}
