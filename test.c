@@ -315,56 +315,49 @@
 
 //写一个程序让数组中的奇数靠前，偶数靠后。
 
-void move(int str[10], int n)
-{
-	//建立思维,怎么去调整？
-	//1.我们可以使用从两端向中间扫描的办法来进行交换
-	//2.如果交换，左边下标往右移动一位，否则不移动。
-	//3.界定范围，左>=右
-	int reight = n - 1;
-	for (; reight >= 0; reight--)
-	{
-		if (str[reight] % 2 == 1)
-		{
-			int i = 0;
-			int count = 0;
-			for (i = 0; i < n; i++)
-			{
-				if (count != 0)
-					break;
-				if (str[i] % 2 == 0)
-				{
-					int tmp = str[i];
-					str[i] = str[reight];
-					str[reight] = tmp;
-				}
-				else
-					continue;
-			}
-		}
-		else
-			continue;
-	}
-	return 0;
-}//err
-
-void print(int* pri, int n)
-{
-	int i = 0;
-	for (i = 0; i < n; i++)
-	{
-		printf("%d ", pri[i]);
-	}
-	return 0;
-}
-int main()
-{
-	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	move(arr, sz);
-	print(arr,sz);
-	return 0;
-}
+//void move(int* str, int n)
+//{
+//	//建立思维,怎么去调整？
+//	//1.我们可以使用从两端向中间扫描的办法来进行交换
+//	//2.如果交换，左边下标往右移动一位，否则不移动。
+//	//3.界定范围，左>=右
+//	int reight = n - 1;
+//	int left = 0;
+//	for (; reight > 1; reight--)
+//	{
+//		if (1 == str[reight] % 2)
+//		{
+//			for (left = 0; left <= reight; left++)
+//			{
+//				if (0 == str[left] % 2)
+//				{
+//					int tmp = str[left];
+//					str[left] = str[reight];
+//					str[reight] = tmp;
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
+//
+//void print(int* pri, int n)
+//{
+//	int i = 0;
+//	for (i = 0; i < n; i++)
+//	{
+//		printf("%d ", pri[i]);
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	move(arr, sz);
+//	print(arr,sz);
+//	return 0;
+//}
 
 //int main()
 //{
@@ -376,3 +369,131 @@ int main()
 //		printf("是奇数。");
 //	return 0;
 //}
+
+
+//5名运动员进行百米冲刺比赛，5名运动员各说了一句话，里面有一半正确。
+//a.b第2，我第3
+//b.e第4，我第2
+//c.d第2，我第1
+//d.c第5，我第3
+//e.a第1，我第4
+
+//用程序判断真正的名次
+
+//int main()
+//{
+//	//穷举法
+//	int a = 0;
+//	int b = 0;
+//	int c = 0;
+//	int d = 0;
+//	int e = 0;
+//	for (a = 1; a < 6; a++)
+//	{
+//		for (b = 1; b < 6; b++)
+//		{
+//			for (c = 1; c < 6; c++)
+//			{
+//				for (d = 1; d < 6; d++)
+//				{
+//					for (e = 1; e < 6; e++)
+//					{
+//						if ((b == 2) + (a == 3) == 1 &&
+//							(e == 4) + (b == 2) == 1 &&
+//							(d == 2) + (c == 1) == 1 &&
+//							(c == 5) + (d == 3) == 1 &&
+//							(a == 1) + (e == 4) == 1 )
+//						{
+//							if (a * b * c * d * e == 120)
+//								printf("a排第%d b排第%d c排第%d d排第%d e排第%d\n", a, b, c, d, e);
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+//int main()
+//{
+//	//a.b第2，我第3
+//    //b.e第4，我第2
+//    //c.d第2，我第1
+//    //d.c第5，我第3
+//    //e.a第1，我第4
+//    int a, b, c, d, e;
+//    
+//    for (a = 1; a < 6; a++)
+//	{
+//		for (b = 1; b < 6; b++)
+//		{
+//			for (c = 1; c < 6; c++)
+//			{
+//				for (d = 1; d < 6; d++)
+//				{
+//					for (e = 1; e < 6; e++)
+//					{
+//						if (((a == 3) || (b == 2) == 1) &&
+//							((e == 4) || (b == 2) == 1) &&
+//							((c == 1) || (d == 2) == 1) &&
+//							((d == 3) || (c == 5) == 1) &&//应该是可以用||这个逻辑，但是确实结果有问题。
+//							((e == 4) || (a == 1) == 1) &&//老师这里两个逻辑用相加判断是否等于1(是否为真)。
+//							((a != b) && (b != c) && (c!= d) && (d != e)))//这里用5个数的积为120来判断。
+//							printf("a排第%d b排第%d c排第%d d排第%d e排第%d\n", a, b, c, d, e);
+//					}
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
+
+//写一个函数来判断一个字符串是否为另一个字符串旋转后所得到的
+
+int my_cmp(char* x, char* y, int line)
+{
+	int n = 0;
+	int i = 0;
+	int j = line - 1;
+	for (i = 0, j; i < j; i++, j--)
+	{
+		char tmp = x[i];
+		x[i] = x[j];
+		x[j] = tmp;
+	}
+	if (strcmp(x, y) == 0)
+	{
+		return 1;
+	}
+	else
+		return 0;
+}
+int main()
+{
+	char a[] = "aabbccd";
+	char b[] = "dccbbaa";
+	int line1 = strlen(a);
+	int line2 = strlen(b);
+	//1.先判断两个字符串长度是否相等。相等可以比较，不相等比较无意义。
+	//2.我们可以直接将一个字符串颠倒，然后使用strcmp函数对两个字符串进行对比。
+	//3.返回1，字符串不相同，那么判定不是。如果返回值为0，那么字符串相同。  
+	if (line1 != line2)
+	{
+		printf("字符串长度不同，对比无意义。");
+
+	}
+	else
+	{
+		int end = my_cmp(a, b, line1);
+		if (end == 1)
+		{
+			printf("a和b是相互旋转后得到的字符串。\n");
+		}
+		else
+		{
+			printf("a和b不是相互旋转后得到的字符串。\n");
+		}
+	}
+	return 0;
+}
